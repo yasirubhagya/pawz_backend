@@ -1,0 +1,29 @@
+{
+  "name": "healthcareforum",
+  "version": "1.0.0",
+  "description": "backend rest api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yasirubhagya/healthCareForum.git"
+  },
+  "author": "yasiru bhagya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yasirubhagya/healthCareForum/issues"
+  },
+  "homepage": "https://github.com/yasirubhagya/healthCareForum#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.19",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "jest": "^26.4.0"
+  }
+}
