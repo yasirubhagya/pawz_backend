@@ -10,7 +10,17 @@ exports.getAllpets =(req, res, next) => {
    .catch(error=>{
       return res.status(503).json({'msg':'err','error':error});
    })
-}   
+}
+
+exports.getPetById=(req, res, next) => {
+   petModel.findById(req.params.PID).exec()
+   .then(result=>{
+      return res.status(200).json(result);
+   })
+   .catch(error=>{
+      return res.status(503).json({'msg':'err','error':error});
+   })
+}
 
 exports.addPet =(req, res, next) => {
   petdoc = new petModel({
