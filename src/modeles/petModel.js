@@ -8,12 +8,16 @@ const petSchema = mongoose.Schema({
         type:mongoose.SchemaTypes.String,
         required:true
     },
-    height: {
-        type: mongoose.SchemaTypes.Number,
+    gender: {
+        type: mongoose.SchemaTypes.String,
         required: true
     },
-    weight:{
-        type:mongoose.SchemaTypes.Number,
+    dateofbirth:{
+        type:mongoose.SchemaTypes.Date,
+        required:true
+    },
+    isneutralized:{
+        type:mongoose.SchemaTypes.Boolean,
         required:true
     }
 });

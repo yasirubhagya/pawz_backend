@@ -16,8 +16,9 @@ exports.addPet =(req, res, next) => {
   petdoc = new petModel({
      name:req.body.name,
      breed:req.body.breed,
-     height:req.body.height,
-     weight:req.body.weight
+     gender:req.body.gender,
+     dateofbirth:new Date(req.body.dateofbirth),
+     isneutralized:req.body.isneutralized
   }).save()
   .then(result =>{
      return res.status(200).json({'msg':'ok','result':result});
@@ -27,6 +28,17 @@ exports.addPet =(req, res, next) => {
   })
   
 }
+
+exports.removePet = (req, res, next) => {
+   petModel.findByIdAndRemove(req.params.PID).exec()
+   .then(result =>{
+      return res.status(200).json({'msg':'ok','result':result});
+   })
+   .catch(error=>{
+      return res.status(503).json({'msg':'err','error':error});
+   })
+}
+
 exports.getUserByUID = (req, res, next) => {
    sqldb.execute(sqlcmd.selectUser,[req.params.UID],(err, results, fields)=>{
         if(err){
