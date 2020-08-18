@@ -1,5 +1,5 @@
 const sqldb = require('../../sqldbconn');
-const sqlcmd = require('../../sqlcmd');
+//const sqlcmd = require('../../sqlcmd');
 
 exports.getUserByUID = (req, res, next) => {
    sqldb.execute(sqlcmd.selectUser,[req.params.UID],(err, results, fields)=>{

@@ -1,6 +1,32 @@
 const sqldb = require('../../sqldbconn');
-const sqlcmd = require('../../sqlcmd');
+const petModel = require('../modeles/petModel');
+//const sqlcmd = require('../../sqlcmd');
 
+exports.getAllpets =(req, res, next) => {
+   petModel.find().exec()
+   .then(result=>{
+      return res.status(200).json(result);
+   })
+   .catch(error=>{
+      return res.status(503).json({'msg':'err','error':error});
+   })
+}   
+
+exports.addPet =(req, res, next) => {
+  petdoc = new petModel({
+     name:req.body.name,
+     breed:req.body.breed,
+     height:req.body.height,
+     weight:req.body.weight
+  }).save()
+  .then(result =>{
+     return res.status(200).json({'msg':'ok','result':result});
+  })
+  .catch(error=>{
+     return res.status(503).json({'msg':'err','error':error});
+  })
+  
+}
 exports.getUserByUID = (req, res, next) => {
    sqldb.execute(sqlcmd.selectUser,[req.params.UID],(err, results, fields)=>{
         if(err){
@@ -11,5 +37,5 @@ exports.getUserByUID = (req, res, next) => {
 }
 
 exports.addNewUser = (req, res, next) => {
-    
+    return res.status(200).json({'msg':'ok'});
 }
