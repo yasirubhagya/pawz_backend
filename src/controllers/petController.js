@@ -3,7 +3,8 @@ const petModel = require('../modeles/petModel');
 //const sqlcmd = require('../../sqlcmd');
 
 exports.getAllpets =(req, res, next) => {
-   petModel.find().exec()
+   console.log(req.userData.userid);
+   petModel.find({user:req.userData.userid}).exec()
    .then(result=>{
       return res.status(200).json(result);
    })
@@ -13,7 +14,7 @@ exports.getAllpets =(req, res, next) => {
 }
 
 exports.getPetById=(req, res, next) => {
-   petModel.findById(req.params.PID).exec()
+   petModel.find({_id:req.params.PID,user:req.userData.userid}).exec()
    .then(result=>{
       return res.status(200).json(result);
    })
@@ -25,6 +26,7 @@ exports.getPetById=(req, res, next) => {
 exports.addPet =(req, res, next) => {
   petdoc = new petModel({
      name:req.body.name,
+     user:req.userData.userid,
      breed:req.body.breed,
      gender:req.body.gender,
      dateofbirth:new Date(req.body.dateofbirth),

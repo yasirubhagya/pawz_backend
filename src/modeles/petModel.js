@@ -4,6 +4,10 @@ const petSchema = mongoose.Schema({
         type: mongoose.SchemaTypes.String,
         required: true
     },
+    user:{
+        type:mongoose.SchemaTypes.ObjectId,
+        required:true
+    },
     breed:{
         type:mongoose.SchemaTypes.String,
         required:true
